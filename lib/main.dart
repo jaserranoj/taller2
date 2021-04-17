@@ -43,6 +43,7 @@ class _HomePageState extends State<HomePage> {
         onPressed:_botonFlotante,
         child: Icon(Icons.access_alarms),
       ),
+
     );
   }
   _botonFlotante() {
