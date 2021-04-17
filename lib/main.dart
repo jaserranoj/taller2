@@ -14,7 +14,42 @@ class MyAplicacion extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Text("jaserranoj"),
+      home: HomePage(),
     );
   }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+ }
+
+
+class _HomePageState extends State<HomePage> {
+  int _counter=0;
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Inicio"),
+      ),
+      body: Center(
+        child: Text("Valor $_counter"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed:_botonFlotante,
+        child: Icon(Icons.access_alarms),
+      ),
+    );
+  }
+  _botonFlotante() {
+    setState((){
+      _counter++;
+
+    });
+}
+
 }
