@@ -280,41 +280,73 @@ class _CalculadoraState extends State<Calculadora> {
 
   void _operacion() {
     var arreglo =operaciones.split(" ");
-    print(int.parse(arreglo[0]));
-    print(int.parse(arreglo[2]));
-    if(arreglo[1].trim() == "-") {
-      setState(() {
-        var resultado = int.parse(arreglo[0]) - int.parse(arreglo[2]);
-        resultadoOperaciones = "$resultado";
-      });
-    }
+    print(arreglo.length);
+    if (arreglo.length == 3) {
+      if (!int.parse(arreglo[0]).isNaN) {
+        print(int.parse(arreglo[0]));
+      } else {
+        resultadoOperaciones = "Error.";
+        operaciones = "0";
+        return;
+      }
+      if (arreglo[1].isNotEmpty) {
+        print(arreglo[1]);
+      } else {
+        resultadoOperaciones = "Error.";
+        operaciones = "0";
+        return;
+      }
+      if (!int.parse(arreglo[2]).isNaN) {
+        print(int.parse(arreglo[2]));
+      } else {
+        resultadoOperaciones = "Error.";
+        operaciones = "0";
+        return;
+      }
 
-    if(arreglo[1].trim() == "+") {
-      setState(() {
-        var resultado = int.parse(arreglo[0]) + int.parse(arreglo[2]);
-        resultadoOperaciones = "$resultado";
-      });
-    }
-
-    if(arreglo[1].trim() == "/") {
-      setState(() {
-        if(int.parse(arreglo[2].trim()) > 1) {
-          var resultado = int.parse(arreglo[0]) / int.parse(arreglo[2]);
+      if(arreglo[1].trim() == "-") {
+        setState(() {
+          var resultado = int.parse(arreglo[0]) - int.parse(arreglo[2]);
           resultadoOperaciones = "$resultado";
-        }else{
-          resultadoOperaciones="Error.";
-          operaciones = "0";
-        }
-      });
+        });
+      }
+
+      if(arreglo[1].trim() == "+") {
+        setState(() {
+          var resultado = int.parse(arreglo[0]) + int.parse(arreglo[2]);
+          resultadoOperaciones = "$resultado";
+        });
+      }
+
+      if(arreglo[1].trim() == "/") {
+        setState(() {
+          if(int.parse(arreglo[2].trim()) > 1) {
+            var resultado = int.parse(arreglo[0]) / int.parse(arreglo[2]);
+            resultadoOperaciones = "$resultado";
+          }else{
+            resultadoOperaciones="Error.";
+            operaciones = "0";
+            return;
+          }
+        });
+      }
+
+      if(arreglo[1].trim() == "*") {
+        setState(() {
+          var resultado = int.parse(arreglo[0]) * int.parse(arreglo[2]);
+          resultadoOperaciones = "$resultado";
+        });
+      }
+    }else{
+      resultadoOperaciones="Error.";
+      operaciones = "0";
+      return;
     }
 
-    if(arreglo[1].trim() == "*") {
-      setState(() {
-        var resultado = int.parse(arreglo[0]) * int.parse(arreglo[2]);
-        resultadoOperaciones = "$resultado";
-      });
-    }
+
   }
+
+
 
 
 }
