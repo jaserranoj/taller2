@@ -18,6 +18,7 @@ class Calculadora extends StatefulWidget {
 
 class _CalculadoraState extends State<Calculadora> {
   String operaciones="0";
+  int suma=0;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class _CalculadoraState extends State<Calculadora> {
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 60,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -139,7 +140,7 @@ class _CalculadoraState extends State<Calculadora> {
                               operaciones += "*";});
                             },
                             child: Text(
-                                "X"
+                                "*"
                             )
                         )
                       ],
@@ -228,10 +229,10 @@ class _CalculadoraState extends State<Calculadora> {
                         ElevatedButton(
                             onPressed: (){
                               setState((){
-                              operaciones += ".";});
+                              operaciones = "0";});
                             },
                             child: Text(
-                                "."
+                                "C"
                             )
                         ),
                         SizedBox(width: 10,),
@@ -247,11 +248,11 @@ class _CalculadoraState extends State<Calculadora> {
                         SizedBox(width: 10,),
                         ElevatedButton(
                             onPressed: (){
-                              operaciones="0";
+                              operaciones+=".";
                               setState(() {});
                             },
                             child: Text(
-                                "C"
+                                "."
                             )
                         )
                       ],
@@ -260,26 +261,6 @@ class _CalculadoraState extends State<Calculadora> {
                 )
               ],
             ),
-            SizedBox(height: 10,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 300,
-                  height: 50,
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: ElevatedButton(
-                      child: Text('='),
-                      onPressed: (){
-                        operaciones="Resultado";
-                        setState(() {});
-                      },
-                    ),
-                  ),
-                )
-              ],
-            )
           ],
         ),
       ),
