@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -272,6 +274,70 @@ class _CalculadoraState extends State<Calculadora> {
                 )
               ],
             ),
+            SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 300,
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: (){
+                              setState((){
+                                //  String t =  _operacion.toString();
+                                //  print(t);
+                                _raiz();
+                                operaciones = resultadoOperaciones;
+
+                              });
+                            },
+                            child: Text(
+                                "sqrt()"
+                            )
+                        ),
+                        SizedBox(width: 10,),
+                        ElevatedButton(
+                            onPressed: (){
+                              setState((){
+                                //  String t =  _operacion.toString();
+                                //  print(t);
+                                _cruadado();
+                                operaciones = resultadoOperaciones;
+
+                              });
+                            },
+                            child: Text(
+                                "^2"
+                            )
+                        ),
+                        SizedBox(width: 10,),
+                        ElevatedButton(
+                            onPressed: (){
+
+                            },
+                            child: Text(
+                                " % "
+                            )
+                        ),
+                        SizedBox(width: 10,),
+                        ElevatedButton(
+                            onPressed: (){
+
+                            },
+                            child: Text(
+                                "  "
+                            )
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
@@ -347,6 +413,33 @@ class _CalculadoraState extends State<Calculadora> {
   }
 
 
+  void _raiz() {
+    var arreglo =operaciones.split(" ");
 
+    if (arreglo.length == 1) {
+      if (!int
+          .parse(arreglo[0])
+          .isNaN) {
+        print(int.parse(arreglo[0]));
+        var resultado = sqrt(int.parse(arreglo[0]));
+        resultadoOperaciones = "$resultado";
+      } else {
+        resultadoOperaciones = "Error.";
+        operaciones = "0";
+        return;
+      }
+    }
+
+
+
+  }
+
+  void _cruadado() {
+
+    var resultado = pow(4,2);
+    resultadoOperaciones = "$resultado";
+
+
+  }
 
 }
