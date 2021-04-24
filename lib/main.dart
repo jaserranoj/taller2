@@ -31,7 +31,7 @@ class _CalculadoraState extends State<Calculadora> {
         body: Column(
           children: [
             Container(
-              width: 300,
+              width: 200,
               height: 100,
               child: FittedBox(
                 alignment: AlignmentDirectional.centerEnd,
@@ -298,8 +298,12 @@ class _CalculadoraState extends State<Calculadora> {
 
     if(arreglo[1].trim() == "/") {
       setState(() {
-        var resultado = int.parse(arreglo[0]) / int.parse(arreglo[2]);
-        resultadoOperaciones = "$resultado";
+        if(int.parse(arreglo[2].trim()) > 1) {
+          var resultado = int.parse(arreglo[0]) / int.parse(arreglo[2]);
+          resultadoOperaciones = "$resultado";
+        }else{
+          operaciones = "0";
+        }
       });
     }
 
