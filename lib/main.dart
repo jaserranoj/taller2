@@ -295,6 +295,20 @@ class _CalculadoraState extends State<Calculadora> {
         resultadoOperaciones = "$resultado";
       });
     }
+
+    if(arreglo[1].trim() == "/") {
+      setState(() {
+        var resultado = int.parse(arreglo[0]) / int.parse(arreglo[2]);
+        resultadoOperaciones = "$resultado";
+      });
+    }
+
+    if(arreglo[1].trim() == "*") {
+      setState(() {
+        var resultado = int.parse(arreglo[0]) * int.parse(arreglo[2]);
+        resultadoOperaciones = "$resultado";
+      });
+    }
   }
 
 
