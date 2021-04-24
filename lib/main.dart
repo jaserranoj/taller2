@@ -288,6 +288,7 @@ class _CalculadoraState extends State<Calculadora> {
                         ElevatedButton(
                             onPressed: (){
                               setState((){
+
                                 //  String t =  _operacion.toString();
                                 //  print(t);
                                 _raiz();
@@ -320,7 +321,8 @@ class _CalculadoraState extends State<Calculadora> {
                               setState((){
                                 //  String t =  _operacion.toString();
                                 //  print(t);
-                                _raiz();
+                                operaciones += " % ";
+                                _operacion();
                                 operaciones = resultadoOperaciones;
 
                               });
@@ -410,9 +412,25 @@ class _CalculadoraState extends State<Calculadora> {
         });
       }
     }else{
-      resultadoOperaciones="Error.";
-      operaciones = "0";
-      return;
+
+      if (arreglo.length == 5) {
+        if(arreglo[1].trim() == "*") {
+          if(arreglo[3].trim() == "%") {
+            setState(() {
+              var resultado = (int.parse(arreglo[0]) * int.parse(arreglo[2]))/100;
+              resultadoOperaciones = "$resultado";
+            });
+          }
+        }
+
+      }else {
+
+        resultadoOperaciones="Error.";
+        operaciones = "0";
+        return;
+      }
+
+
     }
 
 
