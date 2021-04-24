@@ -302,6 +302,7 @@ class _CalculadoraState extends State<Calculadora> {
           var resultado = int.parse(arreglo[0]) / int.parse(arreglo[2]);
           resultadoOperaciones = "$resultado";
         }else{
+          resultadoOperaciones="Error.";
           operaciones = "0";
         }
       });
