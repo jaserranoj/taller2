@@ -441,14 +441,21 @@ class _CalculadoraState extends State<Calculadora> {
     var arreglo =operaciones.split(" ");
 
     if (arreglo.length == 1) {
-      if (!int
-          .parse(arreglo[0])
-          .isNaN) {
-        print(int.parse(arreglo[0]));
-        var resultado = sqrt(int.parse(arreglo[0]));
-        resultadoOperaciones = "$resultado";
-      } else {
-        resultadoOperaciones = "Error.";
+      if (int.parse(arreglo[0]) > 1) {
+        if (!int
+            .parse(arreglo[0])
+            .isNaN) {
+          print(int.parse(arreglo[0]));
+          var resultado = sqrt(int.parse(arreglo[0]));
+          resultadoOperaciones = "$resultado";
+        } else {
+          resultadoOperaciones = "Error.";
+          operaciones = "0";
+          return;
+        }
+      }else {
+
+        resultadoOperaciones="Error.";
         operaciones = "0";
         return;
       }
