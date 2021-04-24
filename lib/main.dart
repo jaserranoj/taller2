@@ -17,8 +17,12 @@ class Calculadora extends StatefulWidget {
 }
 
 class _CalculadoraState extends State<Calculadora> {
-  String operaciones="0";
-  int suma=0;
+  String operaciones="";
+  int operador1=0;
+  int operador2=0;
+  int count=0;
+
+  String resultadoOperaciones="";
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +85,7 @@ class _CalculadoraState extends State<Calculadora> {
                         ElevatedButton(
                             onPressed: (){
                               setState((){
-                              operaciones += "/";});
+                              operaciones += " / ";});
                             },
                             child: Text(
                                 "÷"
@@ -137,7 +141,9 @@ class _CalculadoraState extends State<Calculadora> {
                         ElevatedButton(
                             onPressed: (){
                               setState((){
-                              operaciones += "*";});
+                              operaciones += " * ";
+                              count++;
+                              });
                             },
                             child: Text(
                                 "*"
@@ -193,7 +199,7 @@ class _CalculadoraState extends State<Calculadora> {
                         ElevatedButton(
                             onPressed: (){
                               setState((){
-                              operaciones += "-";});
+                              operaciones += " - ";});
                             },
                             child: Text(
                                 "-"
@@ -239,20 +245,25 @@ class _CalculadoraState extends State<Calculadora> {
                         ElevatedButton(
                             onPressed: (){
                               setState((){
-                              operaciones += "+";});
+                              //  String t =  _operacion.toString();
+                              //  print(t);
+                                _operacion();
+                                operaciones = resultadoOperaciones;
+
+                              });
                             },
                             child: Text(
-                                "+"
+                                "="
                             )
                         ),
                         SizedBox(width: 10,),
                         ElevatedButton(
                             onPressed: (){
-                              operaciones+=".";
+                              operaciones+=" + ";
                               setState(() {});
                             },
                             child: Text(
-                                "."
+                                "+"
                             )
                         )
                       ],
@@ -266,4 +277,25 @@ class _CalculadoraState extends State<Calculadora> {
       ),
     );
   }
+
+  void _operacion() {
+    var arreglo =operaciones.split(" ");
+    print(int.parse(arreglo[0]));
+    print(int.parse(arreglo[2]));
+    if(arreglo[1].trim() == "-") {
+      setState(() {
+        var resultado = int.parse(arreglo[0]) - int.parse(arreglo[2]);
+        resultadoOperaciones = "$resultado";
+      });
+    }
+
+    if(arreglo[1].trim() == "+") {
+      setState(() {
+        var resultado = int.parse(arreglo[0]) + int.parse(arreglo[2]);
+        resultadoOperaciones = "$resultado";
+      });
+    }
+  }
+
+
 }
