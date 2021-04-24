@@ -317,7 +317,13 @@ class _CalculadoraState extends State<Calculadora> {
                         SizedBox(width: 10,),
                         ElevatedButton(
                             onPressed: (){
+                              setState((){
+                                //  String t =  _operacion.toString();
+                                //  print(t);
+                                _raiz();
+                                operaciones = resultadoOperaciones;
 
+                              });
                             },
                             child: Text(
                                 " % "
@@ -429,16 +435,25 @@ class _CalculadoraState extends State<Calculadora> {
         return;
       }
     }
-
-
-
   }
 
   void _cruadado() {
 
-    var resultado = pow(4,2);
-    resultadoOperaciones = "$resultado";
+    var arreglo =operaciones.split(" ");
 
+    if (arreglo.length == 1) {
+      if (!int
+          .parse(arreglo[0])
+          .isNaN) {
+        print(int.parse(arreglo[0]));
+        var resultado = pow(int.parse(arreglo[0]),2);
+        resultadoOperaciones = "$resultado";
+      } else {
+        resultadoOperaciones = "Error.";
+        operaciones = "0";
+        return;
+      }
+    }
 
   }
 
